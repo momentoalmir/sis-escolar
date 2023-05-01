@@ -39,7 +39,6 @@ class Router
 
     public static function redirect($path)
     {
-        $path = BASE_URL . $path;
         header('Location: ' . $path);
         exit();
     }
