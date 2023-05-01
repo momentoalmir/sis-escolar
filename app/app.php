@@ -9,7 +9,7 @@ class App
 
     public function __construct()
     {
-        $this->router = new \Utils\Router(BASE_URL);
+        $this->router = new \Utils\Router();
     }
 
     public function getRouter()
