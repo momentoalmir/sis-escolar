@@ -54,7 +54,7 @@ class Database
         $connection->exec($sql);
     }
 
-    public function insert($table, $data)
+    protected function _insert($table, $data)
     {
         $connection = $this->getConnection();
 
@@ -66,7 +66,7 @@ class Database
         $connection->exec($sql);
     }
 
-    public function select($table, $columns = ['*'], $where = [], $limit = null)
+    protected function _select($table, $columns = ['*'], $where = [], $limit = null)
     {
         $connection = $this->getConnection();
 
@@ -92,14 +92,14 @@ class Database
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function get($table, $where = [])
+    protected function _get($table, $where = [])
     {
         $limit = 1;
-        $result = $this->select($table, ['*'], $where, $limit);
+        $result = $this->_select($table, ['*'], $where, $limit);
         return $result[0];
     }
 
-    public function update($table, $data, $where = [])
+    protected function _update($table, $data, $where = [])
     {
         $connection = $this->getConnection();
 
@@ -120,7 +120,7 @@ class Database
         $connection->exec($sql);
     }
 
-    public function delete($table, $where = [])
+    protected function _delete($table, $where = [])
     {
         $connection = $this->getConnection();
 

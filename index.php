@@ -37,7 +37,7 @@ $router->put('/turmas', function () {
     $anoTurma = $_POST['ano'];
 
     $turma = new Turma();
-    $turma->save([
+    $turma->update([
         'descTurma' => $descTurma,
         'ano' => $anoTurma
     ], ['id' => $id]);
