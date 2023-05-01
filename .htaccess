@@ -5,5 +5,8 @@ Options All -Indexes
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+# Adicionar /public/ ao caminho
+RewriteRule ^(.*)$ public/$1 [L,QSA]
+
 # Redirecionar requisições para index.php
 RewriteRule ^(.*)$ index.php [L,QSA]
