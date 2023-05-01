@@ -11,6 +11,17 @@ class Disciplina extends Model
         parent::__construct('tb_disciplinas');
     }
 
+    public function all()
+    {
+        $disciplinas = parent::all();
+
+        foreach ($disciplinas as $key => $disciplina) {
+            $disciplinas[$key]['turma'] = (new Turma())->find($disciplina['idTurma']);
+        }
+
+        return $disciplinas;
+    }
+
     public function turma()
     {
         return $this->belongsTo('tb_turmas', 'idTurma');

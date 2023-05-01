@@ -11,6 +11,8 @@ class Turma extends Model
         parent::__construct('tb_turmas');
     }
 
+
+
     public function disciplinas()
     {
         return $this->hasMany('tb_disciplinas', 'idTurma');

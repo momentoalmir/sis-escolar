@@ -1,37 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
-    <link rel="stylesheet" href="/public/css/main.css">
-</head>
-<body>
-    <h1>Sistema Acadêmico</h1>
 
-    <p>
-        Adicionar uma nova turma: <a href="/turmas/novo">Clique aqui</a>
-    </p>
+<h1>Sistema Acadêmico</h1>
 
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Descrição</th>
-            <th>Ano</th>
-            <th>Ações</th>
-        </tr>
-        <?php foreach($context['turmas'] as $turma): ?>
-        <tr>
-            <td><?= $turma['id'] ?></td>
-            <td><?= $turma['descTurma'] ?></td>
-            <td><?= $turma['ano'] ?></td>
-            <td>
-                <a href="/turmas/editar?id=<?= $turma['id'] ?>">Editar</a>
-                <a href="/turmas/excluir?id=<?= $turma['id'] ?>">Excluir</a>
-            </td>
-        </tr>
-        <?php endforeach; ?>
-    </table>
-</body>
-</html>
+<p>
+    Adicionar uma nova turma: <a href="/turmas/novo">Clique aqui</a>
+</p>
+
+<p>
+    Adicionar uma nova disciplina: <a href="/disciplinas/novo">Clique aqui</a>
+</p>
+
+<h2>Turmas</h2>
+
+<?php require_once 'turmas/index.php' ?>
+
+<h2>Disciplinas</h2>
+
+<?php require_once 'disciplinas/index.php' ?>
+
