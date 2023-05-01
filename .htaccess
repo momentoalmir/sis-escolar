@@ -1,0 +1,9 @@
+# Ativar Engine
+RewriteEngine On
+Options All -Indexes
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirecionar requisições para index.php
+RewriteRule ^(.*)$ index.php [L,QSA]
