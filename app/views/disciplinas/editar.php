@@ -8,4 +8,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
-<a href="/" class="btn btn-secondary">Voltar</a>
+
+<p>
+    <a href="/" class="btn btn-secondary">Voltar</a>
+</p>
