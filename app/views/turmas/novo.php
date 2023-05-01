@@ -1,18 +1,16 @@
-
-<h1>Sistema Acadêmico</h1>
-<p>Nova Turma</p>
-
 <form action="/turmas" method="post">
-    <p>
-    <label for="descTurma">Descrição da Turma</label>
-    <input type="text" name="descTurma" id="descTurma">
-    </p>
+    <div class="form-group">
+        <label for="descTurma">Descrição da Turma</label>
+        <input type="text" name="descTurma" id="descTurma" class="form-control">
+    </div>
 
-    <p>
-    <label for="ano">Ano</label>
-    <input type="text" name="ano" id="ano">
-    </p>
+    <div class="form-group">
+        <label for="ano">Ano</label>
+        <input type="text" name="ano" id="ano" class="form-control">
+    </div>
 
-    <button type="submit">Salvar</button>
+
+    <button type="submit"  class="btn btn-primary">Salvar</button>
 </form>
 
+<br>
