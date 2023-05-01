@@ -20,7 +20,7 @@
       <td><?= $turma['ano'] ?></td>
       <td>
         <a href="/turmas/editar?id=<?= $turma['id'] ?>" class="btn btn-sm btn-primary">Editar</a>
-        <form action="/turmas/excluir" method="POST" style="display: inline">
+        <form action="/turmas/excluir" method="GET" style="display: inline">
           <input type="hidden" name="id" value="<?= $turma['id'] ?>">
           <button type="submit" class="btn btn-sm btn-danger">Excluir</button>
         </form>

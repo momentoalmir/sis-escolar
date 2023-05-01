@@ -20,7 +20,7 @@
                 <td><?= $disciplina['turma']['descTurma'] ?></td>
                 <td>
                     <a href="/disciplinas/editar?id=<?= $disciplina['id'] ?>" class="btn btn-primary">Editar</a>
-                    <form method="POST" action="/disciplinas" style="display: inline">
+                    <form method="GET" action="/disciplinas/excluir" style="display: inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="id" value="<?= $disciplina['id'] ?>">
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir essa disciplina?')">Excluir</button>
