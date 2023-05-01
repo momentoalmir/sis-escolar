@@ -4,13 +4,22 @@ namespace Utils;
 
 class Database
 {
+    public function __construct($host, $port, $database, $username, $password)
+    {
+        $this->host = $host;
+        $this->port = $port;
+        $this->database = $database;
+        $this->username = $username;
+        $this->password = $password;
+    }
+
     public function getConnection()
     {
-        $host = $_ENV['DB_HOST'] ?? 'localhost';
-        $port = $_ENV['DB_PORT'] ?? 3306;
-        $database = $_ENV['DB_DATABASE'] ?? 'sis_escolar';
-        $username = $_ENV['DB_USERNAME'] ?? 'root';
-        $password = $_ENV['DB_PASSWORD'] ?? '';
+        $host = $this->host;
+        $port = $this->port;
+        $database = $this->database;
+        $username = $this->username;
+        $password = $this->password;
 
         $connection = new \PDO("mysql:host=$host;port=$port;dbname=$database", $username, $password);
         $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
@@ -116,7 +125,7 @@ class Database
 
     public static function getDatabase()
     {
-        $db = new Database(DB_HOST, DB_NAME, DB_USER, DB_PASS);
+        $db = new Database(DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD);
         return $db;
     }
 }

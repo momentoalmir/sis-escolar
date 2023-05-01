@@ -6,21 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
 
-    <script>
-        function excluir(event) {
-            event.preventDefault();
-
-            if (confirm('Deseja realmente excluir?')) {
-                const id = event.target.dataset.id;
-
-                fetch(`/turmas/excluir?id=${id}`, {
-                    method: 'DELETE'
-                }).then(() => {
-                    window.location.reload();
-                });
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>Sistema Acadêmico</h1>
@@ -43,7 +28,7 @@
             <td><?= $turma['ano'] ?></td>
             <td>
                 <a href="/turmas/editar?id=<?= $turma['id'] ?>">Editar</a>
-                <a href="/turmas/excluir" data-id="<?= $turma['id'] ?>" onclick="excluir(event)">Excluir</a>
+                <a href="/turmas/excluir?id=<?= $turma['id'] ?>">Excluir</a>
             </td>
         </tr>
         <?php endforeach; ?>

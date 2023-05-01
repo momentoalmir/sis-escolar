@@ -3,9 +3,10 @@
 
 define('BASE_URL', '/' . basename(__DIR__));
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'sis_escolar');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PORT', '3306');
+define('DB_DATABASE', 'sis_escolar');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
 
 require_once 'vendor/autoload.php';
 
@@ -49,8 +50,8 @@ $router->put('/turmas', function () {
     Router::redirect('/');
 });
 
-$router->post('/turmas/excluir', function () {
-    $id = $_POST['id'];
+$router->get('/turmas/excluir', function () {
+    $id = $_GET['id'];
 
     $db = Database::getDatabase();
     $db->delete('tb_turmas', ['id' => $id]);
