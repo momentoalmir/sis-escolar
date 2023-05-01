@@ -21,7 +21,7 @@
             <th>Ano</th>
             <th>Ações</th>
         </tr>
-        <?php foreach($context as $turma): ?>
+        <?php foreach($context['turmas'] as $turma): ?>
         <tr>
             <td><?= $turma['id'] ?></td>
             <td><?= $turma['descTurma'] ?></td>

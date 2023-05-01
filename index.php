@@ -1,23 +1,20 @@
 <?php
 
-define('DB_HOST', 'localhost');
-define('DB_PORT', '3306');
-define('DB_DATABASE', 'sis_escolar');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-
 require_once 'vendor/autoload.php';
 
 use Utils\Router;
-use Utils\Database;
 use Utils\View;
+
+use App\Models\Turma;
 
 $app = new App\App();
 $router = $app->getRouter();
 
 $router->get('/', function () {
-    $db = Database::getDatabase();
-    $context = $db->select('tb_turmas');
+    $turma = new Turma();
+    $context = [
+        'turmas' => $turma->all()
+    ];
     View::render('home', $context);
 });
 
@@ -27,9 +24,9 @@ $router->get('/turmas/novo', function () {
 
 $router->get('/turmas/editar', function () {
     $id = $_GET['id'];
-    $db = Database::getDatabase();
+    $turma = new Turma();
     $context = [
-        'turma' => $db->get('tb_turmas', ['id' => $id])
+        'turma' => $turma->find($id)
     ];
     View::render('turmas/editar', $context);
 });
@@ -39,8 +36,8 @@ $router->put('/turmas', function () {
     $descTurma = $_POST['descTurma'];
     $anoTurma = $_POST['ano'];
 
-    $db = Database::getDatabase();
-    $db->update('tb_turmas', [
+    $turma = new Turma();
+    $turma->save([
         'descTurma' => $descTurma,
         'ano' => $anoTurma
     ], ['id' => $id]);
@@ -51,8 +48,8 @@ $router->put('/turmas', function () {
 $router->get('/turmas/excluir', function () {
     $id = $_GET['id'];
 
-    $db = Database::getDatabase();
-    $db->delete('tb_turmas', ['id' => $id]);
+    $turma = new Turma();
+    $turma->delete(['id' => $id]);
 
     Router::redirect('/');
 });
@@ -61,8 +58,8 @@ $router->post('/turmas', function () {
     $descTurma = $_POST['descTurma'];
     $anoTurma = $_POST['ano'];
 
-    $db = Database::getDatabase();
-    $db->insert('tb_turmas', [
+    $turma = new Turma();
+    $turma->create([
         'descTurma' => $descTurma,
         'ano' => $anoTurma
     ]);

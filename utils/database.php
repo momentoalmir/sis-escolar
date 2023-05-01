@@ -2,26 +2,38 @@
 
 namespace Utils;
 
+
 class Database
 {
-    public function __construct($host, $port, $database, $username, $password)
+    private $host;
+    private $port;
+    private $database;
+    private $username;
+    private $password;
+
+    private $options = [
+        'database' => [
+            'host' => 'localhost',
+            'port' => '3306',
+            'database' => 'sis_escolar',
+            'username' => 'root',
+            'password' => ''
+        ],
+        'baseURL' => ''
+    ];
+
+    public function __construct()
     {
-        $this->host = $host;
-        $this->port = $port;
-        $this->database = $database;
-        $this->username = $username;
-        $this->password = $password;
+        $this->host = $this->options['database']['host'];
+        $this->port = $this->options['database']['port'];
+        $this->database = $this->options['database']['database'];
+        $this->username = $this->options['database']['username'];
+        $this->password = $this->options['database']['password'];
     }
 
     public function getConnection()
     {
-        $host = $this->host;
-        $port = $this->port;
-        $database = $this->database;
-        $username = $this->username;
-        $password = $this->password;
-
-        $connection = new \PDO("mysql:host=$host;port=$port;dbname=$database", $username, $password);
+        $connection = new \PDO("mysql:host=$this->host;port=$this->port;dbname=$this->database", $this->username, $this->password);
         $connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
         return $connection;
@@ -121,11 +133,5 @@ class Database
         $sql = "DELETE FROM $table WHERE $whereSql";
 
         $connection->exec($sql);
-    }
-
-    public static function getDatabase()
-    {
-        $db = new Database(DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD);
-        return $db;
     }
 }

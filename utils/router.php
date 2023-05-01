@@ -4,10 +4,12 @@ namespace Utils;
 
 class Router
 {
-    private $routes = [];
+    private $routes;
+    private $baseURL;
 
-    public function __construct($baseURL='')
+    public function __construct($routes=[], $baseURL='')
     {
+        $this->routes = $routes;
         $this->baseURL = $baseURL;
     }
 
