@@ -6,7 +6,7 @@ class Router
 {
     private $routes = [];
 
-    public function __construct($baseURL='/')
+    public function __construct($baseURL='')
     {
         $this->baseURL = $baseURL;
     }
