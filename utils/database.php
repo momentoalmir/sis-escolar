@@ -45,10 +45,18 @@ class Database
 
         $sql = "CREATE DATABASE IF NOT EXISTS sis_escolar;
         USE sis_escolar;
+
         CREATE TABLE IF NOT EXISTS tb_turmas (
             id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
             descTurma VARCHAR(20) NOT NULL,
             ano VARCHAR(4) NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS tb_disciplinas (
+            id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            descDisciplina VARCHAR(20) NOT NULL,
+            idTurma INT NOT NULL,
+            FOREIGN KEY (idTurma) REFERENCES tb_turmas(id)
         );";
 
         $connection->exec($sql);
@@ -133,5 +141,27 @@ class Database
         $sql = "DELETE FROM $table WHERE $whereSql";
 
         $connection->exec($sql);
+    }
+
+    protected function _hasMany($table, $foreignKey, $foreignId)
+    {
+        $connection = $this->getConnection();
+
+        $sql = "SELECT * FROM $table WHERE $foreignKey = $foreignId";
+
+        $statement = $connection->query($sql);
+
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    protected function _belongsTo($table, $foreignKey)
+    {
+        $connection = $this->getConnection();
+
+        $sql = "SELECT * FROM $table WHERE id = $foreignKey";
+
+        $statement = $connection->query($sql);
+
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

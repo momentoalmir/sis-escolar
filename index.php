@@ -10,6 +10,9 @@ use App\Models\Turma;
 $app = new App\App();
 $router = $app->getRouter();
 
+$db = new Utils\Database();
+$db->migrate();
+
 $router->get('/', function () {
     $turma = new Turma();
     $context = [
