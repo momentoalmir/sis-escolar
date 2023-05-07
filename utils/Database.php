@@ -22,8 +22,12 @@ class Database
         'baseURL' => ''
     ];
 
-    public function __construct()
+    public function __construct($options=false)
     {
+        if ($options) {
+            $this->options = $options;
+        }
+
         $this->host = $this->options['database']['host'];
         $this->port = $this->options['database']['port'];
         $this->database = $this->options['database']['database'];
