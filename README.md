@@ -21,21 +21,35 @@ Após concluir a instalação, você poderá acessar o sistema acadêmico em seu
 Gerenciamento de Turmas:
 
 Listar todas as turmas
+
 Criar nova turma
+
 Editar informações da turma
+
 Excluir turma
+
 Gerenciamento de Disciplinas:
 
+
 Listar todas as disciplinas
+
 Criar nova disciplina e associar a uma turma
+
 Editar informações da disciplina
+
 Excluir disciplina
+
 O sistema segue o padrão MVC, onde:
 
+
 O diretório app contém as classes de modelos (Models) para representar as tabelas do banco de dados.
+
 O diretório utils contém classes utilitárias, como o roteador (Router), a visualização (View) e a classe de conexão com o banco de dados (Database).
+
 O diretório views contém os arquivos de visualização em formato PHP para exibir as páginas do sistema.
+
 O diretório public contém arquivos públicos, como CSS, JavaScript e imagens.
+
 O arquivo index.php é o ponto de entrada do sistema e define as rotas e controladores para as diferentes páginas.
 
 ## Contribuição
